@@ -1,9 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import React, { useContext } from 'react';
+import { addTodo } from '../actions';
+import { Action } from '../components/App';
 
-const AddTodo = ({ dispatch }) => {
+const AddTodo = () => {
   let input
+  const action = useContext(Action);
 
   return (
     <div>
@@ -12,7 +13,7 @@ const AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
+        action.dispatchTodos(addTodo(input.value))
         input.value = ''
       }}>
         <input ref={node => input = node} />
@@ -24,4 +25,4 @@ const AddTodo = ({ dispatch }) => {
   )
 }
 
-export default connect()(AddTodo)
+export default AddTodo
