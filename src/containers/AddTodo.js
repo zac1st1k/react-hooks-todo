@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { addTodo } from '../actions';
-import { Action } from '../components/App';
+import { Dispatch } from '../components/App';
 
 const AddTodo = () => {
   let input
-  const action = useContext(Action);
+  const dispatch = useContext(Dispatch);
 
   return (
     <div>
@@ -13,7 +13,7 @@ const AddTodo = () => {
         if (!input.value.trim()) {
           return
         }
-        action.dispatchTodos(addTodo(input.value))
+        dispatch(addTodo(input.value))
         input.value = ''
       }}>
         <input ref={node => input = node} />

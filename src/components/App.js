@@ -1,24 +1,22 @@
 import React, { useReducer } from 'react';
 import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
-import todos from '../reducers';
-import visibilityFilter from '../reducers/visibilityFilter';
+import * as reducers from '../reducers';
 import Footer from './Footer';
 
-export const Store = React.createContext();
-export const Action = React.createContext();
+export const State = React.createContext();
+export const Dispatch = React.createContext();
 
 const App = () => {
-  const [stateTodos, dispatchTodos] = useReducer(todos, []);
-  const [stateVisibilityFilter, dispatchVisibilityFilter] = useReducer(visibilityFilter, {});
+  const [state, dispatch] = useReducer(reducers, {});
 
-  return (<Store.Provider value={{ stateTodos, stateVisibilityFilter }}>
-    <Action.Provider value={{ dispatchTodos, dispatchVisibilityFilter }}>
+  return (<State.Provider value={{ state }}>
+    <Dispatch.Provider value={{ dispatch }}>
       <AddTodo />
       {/* <VisibleTodoList />
       <Footer /> */}
-    </Action.Provider>
-  </Store.Provider >
+    </Dispatch.Provider>
+  </State.Provider >
   )
 }
 
