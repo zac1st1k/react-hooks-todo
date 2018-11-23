@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { setVisibilityFilter } from '../actions';
-import { Dispatch, State } from '../components/App';
+import { Store } from '../components/App';
 import Link from '../components/Link';
 
 const FilterLink = ({ filter, children }) => {
-  const dispatch = useContext(Dispatch);
-  const state = useContext(State);
+  const { state, dispatch } = useContext(Store);
 
   return <Link
     active={filter === state.visibilityFilter}

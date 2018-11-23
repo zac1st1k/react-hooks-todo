@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { addTodo } from '../actions';
-import { Dispatch } from '../components/App';
+import { Store } from '../components/App';
 
 const AddTodo = () => {
   let input
-  const dispatch = useContext(Dispatch);
+  const { dispatch } = useContext(Store);
 
   return (
     <div>
